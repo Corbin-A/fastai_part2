@@ -19,7 +19,7 @@ from tensorflow.python.framework import ops
 #from tensorflow.contrib import rnn, legacy_seq2seq as seq2seq
 
 from keras_tqdm import TQDMNotebookCallback
-from keras import initializations
+from keras import initializers
 from keras.applications.resnet50 import ResNet50, decode_predictions, conv_block, identity_block
 from keras.applications.vgg16 import VGG16
 from keras.preprocessing import image
@@ -39,7 +39,6 @@ def load(fname): return pickle.load(open(fname, 'rb'))
 
 
 def limit_mem():
-    K.get_session().close()
     cfg = K.tf.ConfigProto()
     cfg.gpu_options.allow_growth = True
     K.set_session(K.tf.Session(config=cfg))
